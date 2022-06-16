@@ -14,18 +14,21 @@ public class UserService {
 
 	@Autowired
 	private UserRepository repostory;
-	
+
+	public List<User> findAll() {
+		return repostory.findAll();
+	}
+
+	public User findById(Long id) {
+		Optional<User> obj = repostory.findById(id);
+		return obj.get();
+	}
+
 	public User save(User obj) {
 		return repostory.save(obj);
 	}
 	
-	public List<User> findAll(){
-		return repostory.findAll();
-	}
-	
-	public User findById(Long id) {
-		Optional<User> obj = repostory.findById(id);
-		return obj.get();
-		
+	public void delete(Long id) {
+		repostory.deleteById(id);
 	}
 }
